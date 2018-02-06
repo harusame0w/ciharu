@@ -1,0 +1,133 @@
+
+<?php
+
+session_start();
+
+        if(isset($_SESSION['super_admin'])){
+          
+         echo "<script>alert('Please Log out to secure your Account!'); window.location='../main/super_admin_home.php'</script>";
+             exiT();
+        }
+        elseif(isset($_SESSION['admin'])){
+      
+             echo "<script>alert('Please Log out to secure your Account!'); window.location='../main/admin_home.php'</script>";
+                 exiT();
+        }
+   
+?>
+
+
+
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset = "utf-8" />
+		<title>Log In</title>
+		<meta name = "viewport" content = "width=device-width, initial-scale=1" />
+		<link rel = "stylesheet" type = "text/css" href = "../css/mystyle.css"/>
+    <link rel = "stylesheet" type = "text/css" href = "../css/register.css"/>
+		<link href="css/bootstrap.css" rel="stylesheet">
+	</head>
+	
+
+
+<body>
+
+
+<div class="container">
+  <div class="mainform">
+    
+ 
+  <div class="ads"  >
+    
+        <form action="login.php" method="post" >
+        <input class="input" style="color: black;" type="text" name="username" placeholder="Username" required />
+        <br>
+        <input class="input" style="color: black;" type="password" name="password" placeholder="Password" required />
+        <br>
+        <br>
+        <input class="button" type="submit" id="submit" name="login" value="LOGIN" />
+        </form>
+  </div>
+  <div class="ads1">
+<h2 style="font-size: 17px; color:white; font-family: arial; padding-left: 30px;">Don't have an account?<br></h2>
+<button class="text-button"  onclick="document.getElementById('id00').style.display='block'" style="width:auto;">Sign Up </button>
+</div>
+
+
+
+
+
+      
+      </div>
+	 </div>
+
+
+
+
+<div id="id00" class="modal">
+  <span onclick="document.getElementById('id00').style.display='none'" class="close" title="Close Modal">x</span>
+  <form method="post" class="modal-content animate" action="admin_register.php">
+    <div class="container">
+
+
+
+
+
+    <input  name="admin_no" placeholder="Admin Number" type="text" required="required">
+    <input  name="firstname" placeholder="First Name" type="text" required="required ">
+    <input name="m_initial" placeholder="Middle Initial" type="text" required="required ">
+    <input name="lastname" placeholder="Last Name" type="text" required="required ">
+    <h2 style="font-family: arial;">Birthday<input  name="birthday" placeholder="Birthday" type="date" required="required "></h2>
+    <input name="address" placeholder="Address" type="text" required="required ">
+    <input  name="username" placeholder="Username" type="text"  required="required ">
+
+    <input  name="password" placeholder="Password" id="txtPassword" type="password"  required="required ">
+
+    <input  name="password" placeholder="Confirm Password"   id="txtConfirmPassword" type="password"   required="required ">
+
+      <p style="font-family: arial;">By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id00').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" name="Submit" class="signupbtn" class="signupbtn signupbtn-primary" id="btnSubmit"  onclick="return Validate()">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+<script type="text/javascript">
+    function Validate() {
+        var password = document.getElementById("txtPassword").value;
+        var confirmPassword = document.getElementById("txtConfirmPassword").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+        return true;
+    }
+</script>
+</body>
+
+
+<script>
+// Get the modal
+var modal = document.getElementById('id00');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+
+}
+</script>
+
+
+</html>
+	
+	
